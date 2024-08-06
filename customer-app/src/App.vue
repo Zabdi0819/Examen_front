@@ -1,26 +1,77 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="bg-dark" data-bs-theme="dark">
+    <Login v-if="!isAuthenticated" @login="handleLogin" />
+    <div v-else>
+      <button @click="logout" class="btn btn-danger">Cerrar sesión</button>
+      <CustomerForm 
+        :customer="selectedCustomer" 
+        :isEditing="isEditing" 
+        @form-submitted="refreshCustomerList" 
+        @form-reset="resetSelectedCustomer" />
+      <CustomerList 
+        @edit-customer="setCustomerForEditing"
+        ref="customerList" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Login from './components/UserLogin.vue';
+import CustomerList from './components/CustomerList.vue';
+import CustomerForm from './components/CustomerForm.vue';
+import api from './services/api';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    Login,
+    CustomerList,
+    CustomerForm
+  },
+  data() {
+    return {
+      isAuthenticated: false,
+      selectedCustomer: null,
+      isEditing: false
+    };
+  },
+  methods: {
+    handleLogin(token) {
+      localStorage.setItem('token', token);
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      this.isAuthenticated = true;
+    },
+    logout() {
+      localStorage.removeItem('token');
+      delete api.defaults.headers.common['Authorization'];
+      this.isAuthenticated = false;
+    },
+    setCustomerForEditing(customer) {
+      this.selectedCustomer = customer;
+      this.isEditing = true;
+    },
+    refreshCustomerList() {
+      this.$refs.customerList.fetchCustomers();
+      this.resetSelectedCustomer();
+    },
+    resetSelectedCustomer() {
+      this.selectedCustomer = null;
+      this.isEditing = false;
+    }
+  },
+  created() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      this.isAuthenticated = true;
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  background-color: #343a40;
+  color: #ffffff;
 }
+
 </style>
