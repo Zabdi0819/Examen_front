@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
+import router from './router'; // Asegúrate de que esta importación sea correcta
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import Toast, { POSITION } from 'vue-toastification';
@@ -17,4 +17,7 @@ app.use(Toast, {
   draggable: true,
 });
 
-app.use(router).mount('#app');
+// Configuración del Router
+app.use(router);
+
+app.mount('#app'); // Asegúrate de que esto esté al final

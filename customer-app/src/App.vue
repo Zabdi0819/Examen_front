@@ -3,7 +3,8 @@
     <Login v-if="!isAuthenticated" @login="handleLogin" />
     <div v-else>
       <nav class="navbar">
-        <div class="container d-flex justify-content-end">
+        <div class="container d-flex justify-content-between align-items-center">
+          <h1 class="navbar-title">Panel de Administración</h1>
           <button @click="logout" class="btn btn-secondary">Cerrar sesión</button>
         </div>
       </nav>
@@ -55,7 +56,7 @@ export default {
       this.isEditing = true;
     },
     refreshCustomerList() {
-      if (this.$refs.customerList) {
+      if (this.$refs.customerList && typeof this.$refs.customerList.fetchCustomers === 'function') {
         this.$refs.customerList.fetchCustomers();
       } else {
         console.error('CustomerList reference is not available.');
@@ -77,6 +78,7 @@ export default {
   }
 };
 </script>
+
 
 <style>
 body {
