@@ -2,7 +2,11 @@
   <div id="app" class="bg-dark" data-bs-theme="dark">
     <Login v-if="!isAuthenticated" @login="handleLogin" />
     <div v-else>
-      <button @click="logout" class="btn btn-danger">Cerrar sesión</button>
+      <nav class="navbar">
+        <div class="container d-flex justify-content-end">
+          <button @click="logout" class="btn btn-secondary">Cerrar sesión</button>
+        </div>
+      </nav> 
       <CustomerForm 
         :customer="selectedCustomer" 
         :isEditing="isEditing" 
@@ -69,9 +73,13 @@ export default {
 </script>
 
 <style>
-body {
-  background-color: #343a40;
-  color: #ffffff;
-}
+  body {
+    background-color: #343a40;
+    color: #ffffff;
+  }
+
+  .navbar{
+    background-color: #12A0A0;
+  }
 
 </style>

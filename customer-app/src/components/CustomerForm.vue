@@ -1,6 +1,6 @@
 <template>
     <div class="container d-flex justify-content-center align-items-center">
-        <div class="card p-4 bg-dark text-light shadow-lg" style="width: 90%; max-width: 800px;">
+        <div class="card p-4 bg-dark text-light" style="width: 90%; max-width: 800px;">
             <h2>Formulario de Cliente</h2>
             <form @submit.prevent="submitForm">
                 <div class="row">
@@ -27,7 +27,7 @@
                     <label for="email">Correo Electrónico:</label>
                     <input type="email" class="form-control" id="email" v-model="formData.email" required />
                 </div>
-                <button type="submit" class="btn btn-primary w-100">{{ isEditing ? 'Actualizar' : 'Guardar' }}</button>
+                <button type="submit" class="btn btn-info w-100">{{ isEditing ? 'Actualizar' : 'Guardar' }}</button>
             </form>
         </div>
     </div>
@@ -98,7 +98,10 @@ body {
 
 .card {
     background-color: #343a40;
-    border: 1px solid #495057;
+    border: 2px solid #035348 !important;
+    border-radius: 4px; /* Opcional: para bordes redondeados */
+    box-shadow: 0 0 8px rgba(3, 183, 204, 0.8); /* Sombra azul con difuminado */
+    margin-top:50px;
 }
 
 .form-control {
@@ -121,5 +124,9 @@ body {
 .btn-primary:hover {
     background-color: #0056b3;
     border-color: #0056b3;
+}
+
+.btn-info{
+    background-color: #17C1C1;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-    <div class="container mt-4">
+    <div class="container mt-4 bg-dark">
       <h2>Lista de Clientes</h2>
-      <table class="table">
+      <table class="table table-bordered-blue">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -69,6 +69,22 @@
   </script>
   
   <style scoped>
-  /* Agrega tus estilos aquí */
+
+    .table-bordered-blue {
+            border: 2px solid transparent;
+            border-radius: 4px; /* Opcional: para bordes redondeados */
+            background-color: #4b5655; /* Fondo blanco para la tabla */
+            box-shadow: 0 0 8px rgba(3, 183, 204, 0.8); /* Sombra azul con difuminado */
+    }
+
+    .table-bordered-blue th, .table-bordered-blue td {
+        border: 2px solid #035348 !important;
+    }
+
+    .table-bordered-blue thead th {
+        border-bottom: 2px solid #035348 !important;
+        background-color: #101111;
+        color: white;
+    }
   </style>
   
