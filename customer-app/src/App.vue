@@ -58,9 +58,7 @@ export default {
     refreshCustomerList() {
       if (this.$refs.customerList && typeof this.$refs.customerList.fetchCustomers === 'function') {
         this.$refs.customerList.fetchCustomers();
-      } else {
-        console.error('CustomerList reference is not available.');
-      }
+      } 
       this.resetSelectedCustomer();
     },
     resetSelectedCustomer() {
