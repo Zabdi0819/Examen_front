@@ -6,7 +6,7 @@
         <div class="container d-flex justify-content-end">
           <button @click="logout" class="btn btn-secondary">Cerrar sesión</button>
         </div>
-      </nav> 
+      </nav>
       <CustomerForm 
         :customer="selectedCustomer" 
         :isEditing="isEditing" 
@@ -43,6 +43,7 @@ export default {
       localStorage.setItem('token', token);
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       this.isAuthenticated = true;
+      this.refreshCustomerList();
     },
     logout() {
       localStorage.removeItem('token');
@@ -54,7 +55,11 @@ export default {
       this.isEditing = true;
     },
     refreshCustomerList() {
-      this.$refs.customerList.fetchCustomers();
+      if (this.$refs.customerList) {
+        this.$refs.customerList.fetchCustomers();
+      } else {
+        console.error('CustomerList reference is not available.');
+      }
       this.resetSelectedCustomer();
     },
     resetSelectedCustomer() {
@@ -67,19 +72,19 @@ export default {
     if (token) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       this.isAuthenticated = true;
+      this.refreshCustomerList();
     }
   }
 };
 </script>
 
 <style>
-  body {
-    background-color: #343a40;
-    color: #ffffff;
-  }
+body {
+  background-color: #343a40;
+  color: #ffffff;
+}
 
-  .navbar{
-    background-color: #12A0A0;
-  }
-
+.navbar {
+  background-color: #0f8181;
+}
 </style>
