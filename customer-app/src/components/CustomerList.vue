@@ -69,7 +69,6 @@
   </script>
   
   <style scoped>
-
     .table-bordered-blue {
             border: 2px solid transparent;
             border-radius: 4px; /* Opcional: para bordes redondeados */
@@ -84,6 +83,17 @@
     .table-bordered-blue thead th {
         border-bottom: 2px solid #035348 !important;
         background-color: #101111;
+        color: white;
+    }
+
+    .btn-danger{
+        margin-left:20px;
+        background-color: #640217;
+    }
+
+    .btn-warning{
+        margin-left:20px;
+        background-color: #685400;
         color: white;
     }
   </style>

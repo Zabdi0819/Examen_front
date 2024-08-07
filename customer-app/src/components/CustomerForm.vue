@@ -27,7 +27,7 @@
                     <label for="email">Correo Electrónico:</label>
                     <input type="email" class="form-control" id="email" v-model="formData.email" required />
                 </div>
-                <button type="submit" class="btn btn-info w-100">{{ isEditing ? 'Actualizar' : 'Guardar' }}</button>
+                <button type="submit" class="btn btn-custom w-100">{{ isEditing ? 'Actualizar' : 'Guardar' }}</button>
             </form>
         </div>
     </div>
@@ -104,6 +104,11 @@ body {
     margin-top:50px;
 }
 
+.btn-custom{
+    background-color: #12A0A0 !important;
+    color: white !important;
+}
+
 .form-control {
     background-color: #495057;
     color: #f8f9fa;
@@ -114,19 +119,5 @@ body {
     background-color: #495057;
     color: #f8f9fa;
     border-color: #007bff;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-.btn-info{
-    background-color: #17C1C1;
 }
 </style>
