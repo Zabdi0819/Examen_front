@@ -86,6 +86,9 @@ Este proyecto es una aplicación de administración de clientes utilizando Vue.j
 
 ## Notas
 
+- Las credenciales por defecto son:
+    Usuario: user
+    Contraseña: password
 - Asegúrate de que el servidor de la API y la aplicación Vue.js estén corriendo simultáneamente para que el frontend pueda comunicarse con el backend.
 - No se utiliza un archivo `.env` para la configuración del proyecto. En lugar de ello, la configuración de la base de datos debe ser realizada directamente en el código del backend.
 

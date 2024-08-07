@@ -34,7 +34,6 @@ export default {
         this.$emit('login', token); // Emitir evento de login
       } catch (error) {
         console.error('Login failed:', error);
-        // Manejo de errores para mostrar un mensaje al usuario
         alert('Login failed. Please check your credentials.');
       }
     }

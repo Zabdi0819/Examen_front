@@ -1,5 +1,5 @@
 import axios from 'axios';
-import router from '../router'; // Asegúrate de tener configurado el router
+import router from '../router';
 
 const api = axios.create({
   baseURL: 'http://localhost:3000/api',
@@ -19,7 +19,7 @@ api.interceptors.request.use(config => {
   return Promise.reject(error);
 });
 
-// Añade un interceptor para manejar errores de respuesta
+
 api.interceptors.response.use(response => {
   return response;
 }, error => {

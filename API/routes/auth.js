@@ -7,7 +7,7 @@ const secret = 'passwordjwt1';
 router.post('/get-token', (req, res) => {
   const { username, password } = req.body;
 
-  // Validar credenciales (esto es solo un ejemplo, reemplaza con tu lógica de validación)
+  // Validar credenciales 
   if (username === 'user' && password === 'password') {
     const token = jwt.sign({ username }, secret, { expiresIn: '1h' });
     res.json({ token });
